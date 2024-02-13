@@ -1,0 +1,25 @@
+.user-list-wrapper{
+    margin:20px;
+    padding-bottom: 50px;
+    table{
+        td, th{
+            text-align: center;
+        }
+        width: 100%;
+        #delete-icon{
+            color: rgba(253, 6, 6, 0.648);
+        }
+        #edit-icon{
+            color: rgba(29, 157, 55, 0.655);
+        }
+    }
+
+    .user-info{
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+    }
+    button{
+        margin: 20px;
+    }
+}

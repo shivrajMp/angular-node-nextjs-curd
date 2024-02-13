@@ -1,0 +1,49 @@
+<div class="user-list-wrapper">
+  <mat-progress-bar mode="indeterminate" *ngIf="showLoader"></mat-progress-bar>
+  <div *ngIf="!showLoader">
+    <div class="user-info">
+      <div>User author info : {{ userDetails?.author }}</div>
+      <div>Creation Date : {{ userDetails?.time_stamp }}</div>
+    </div>
+    <button mat-raised-button color="primary" (click)="openCreateNewToDo()">Create New</button>
+    <table mat-table [dataSource]="dataSource" >
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef>Project Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.projectName }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="technology">
+        <th mat-header-cell *matHeaderCellDef>Techology Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.technology }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="openEditToDo(element)">
+            <mat-icon id="edit-icon">edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="deletetoDoItem(element.key)">
+            <mat-icon id="delete-icon">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
